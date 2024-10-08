@@ -1,0 +1,51 @@
+
+Find the largest pair sum in an array of distinct integers.
+
+Examples :
+
+Input: arr[] = [12, 34, 10, 6, 40]
+Output: 74
+Explanation: Sum of 34 and 40 is the largest, i.e, 34 + 40 = 74.
+Input: arr[] = [10, 20, 30]
+Output: 50
+Explanation: 20 + 30 = 50.
+Expected Time Complexity: O(n)
+Expected Auxiliary Space: O(1)
+
+
+ int pairsum(vector<int> &arr) 
+ {
+        int n=arr.size();
+        int a=-1e8;
+        int b=-1e8;
+        for(int i=0;i<n;i++)
+        {
+            if(a<arr[i])
+            {
+                if(i!=0)
+                b=a;
+                a=arr[i];
+            }
+            else if(b<arr[i])
+            {
+                b=arr[i];
+            }
+        }
+        return a+b;
+  }
+
+
+
+This function pairsum finds the sum of the two largest distinct elements in the input vector arr. Here's a concise breakdown of the approach:
+
+Initialization: Two variables, a and b, are initialized to a very small value (-1e8), where a stores the largest element and b stores the second largest element found so far.
+
+Iteration: The loop iterates through the array:
+
+If the current element arr[i] is greater than a (the largest element), b is updated to the previous value of a, and a is updated to arr[i].
+If the current element is less than a but greater than b, b is updated to arr[i].
+Result: After the loop, a and b hold the two largest elements, and their sum (a + b) is returned.
+
+Time Complexity: The function makes a single pass through the array, resulting in a time complexity of O(n), where n is the size of the input array.
+
+This ensures that the two largest distinct values are found efficiently in linear time.
