@@ -1,0 +1,37 @@
+ Node* constructLinkedMatrix(vector<vector<int>>& mat) {
+        int n=mat.size();
+        int m=mat[0].size();
+        Node *head=NULL;
+        Node *temp=NULL;
+        Node*prehead=NULL;
+        for(int i=0;i<n;i++)
+        {
+            Node *phead=NULL;
+            for(int j=0;j<m;j++)
+            {
+                
+                Node *newnode=new Node(mat[i][j]);
+                if(phead==NULL)
+                {
+                    phead=newnode;
+                    temp=phead;
+                }
+                else
+                {
+                    temp->right=newnode;
+                    temp=temp->right;
+                }
+                if(prehead!=NULL)
+                {
+                    prehead->down=newnode;
+                    prehead=prehead->right;
+                }
+            }
+            if(head==NULL)
+            {
+                head=phead;
+            }
+            prehead=phead;
+        }
+        return head;
+    }
