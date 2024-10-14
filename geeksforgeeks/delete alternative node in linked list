@@ -1,0 +1,12 @@
+Delete Alternate Nodes
+Difficulty: EasyAccuracy: 56.09%Submissions: 84K+Points: 2
+Given a Singly Linked List, Delete all alternate nodes of the list ie delete all the nodes present in even positions.
+
+void deleteAlt(struct Node *head) {
+        // Code here
+        while(head!=NULL&&head->next!=NULL)
+        {
+            head->next=head->next->next;
+            head=head->next;
+        }
+    }
